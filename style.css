@@ -14,7 +14,7 @@
 
 .calculator{
     background-color: grey;
-    height: 67.5vh;
+    /* height: 67.5vh; */
     width: 24vw;
     border-radius: 56px;
     display: flex;
@@ -48,7 +48,6 @@
 }
 
 .input{
-    
     margin: 8px 16px;
     text-align: end;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
