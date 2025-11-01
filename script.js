@@ -42,8 +42,10 @@ document.querySelector('.buttons').addEventListener('click',(e)=>{
 
         if(operator==''){
             num1 += e.target.textContent;
+            lastInputFlag=num1;
         }else{
             num2 += e.target.textContent;
+            lastInputFlag=num2;
         }
         inputBox.textContent += e.target.textContent;
         console.log('number listened');
@@ -60,13 +62,49 @@ document.querySelector('.buttons').addEventListener('click',(e)=>{
 
             case 'num1':
                 num1 = num1.slice(0,-1);
+                break;
             case 'operator':
                 operator='';
+                break;
             case 'num2':
                 num2 = num2.slice(0,-1);    
+                break;
         }
         inputBox.textContent=inputBox.textContent.slice(0,-1);   
         console.log('clear listened');
+    }else if(classList.contains('operator')){
+        let op=e.target.textContent;
+        switch(op){
+            case '+': 
+            case '−':
+                if(num1==''){
+                    num1Sign=op;
+                    lastInputFlag='num1Sign';
+                    inputBox.textContent=op;
+                }else if(num2=='' && operator==''){
+                    operator=op;
+                    lastInputFlag='operator';
+                    inputBox.textContent+=op;
+                }else if(num2=='' && operator!=''){
+                    operator=op;
+                    inputBox.textContent=inputBox.textContent.slice(0,-1) + op;
+                }
+                break; 
+            case 'x':
+            case '/': 
+            case '^': 
+            case '%':
+                if(num1!='' && operator==''){
+                    operator=op;
+                    inputBox.textContent+=op;
+                }else if(operator!=''){
+                    operator=op;
+                    inputBox.textContent=inputBox.textContent.slice(0,-1) + op;
+                }
+                break;
+        }
+        console.log(op);
+        console.log('operator listened');
     }
 });
 
