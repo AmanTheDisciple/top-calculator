@@ -14,7 +14,7 @@
 
 .calculator{
     background-color: grey;
-    height: 64vh;
+    height: 67.5vh;
     width: 24vw;
     border-radius: 56px;
     display: flex;
@@ -63,7 +63,7 @@
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    gap:20px 14px;
+    gap:0px 14px;
     /* row-gap: 36px;
     column-gap: 30px; */
     /* justify-content: center; */

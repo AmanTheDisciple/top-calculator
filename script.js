@@ -1,3 +1,7 @@
+let num1 = 0;
+let num2 = 0;
+let operator = '';
+
 function add(num1,num2){
     return +num1 + +num2;
 }
@@ -27,3 +31,9 @@ function operate(num1,num2,operator){
         return num2;
     }
 }
+
+document.querySelector('.number').addEventListener('click',(e)=>{
+    if(num2==0 && operator==''){
+        num1 = (num1 * 10) + +e.target.textContent;
+    }
+})
