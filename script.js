@@ -69,6 +69,17 @@ document.querySelector('.buttons').addEventListener('click',(e)=>{
         inputBox.textContent += e.target.textContent;
         console.log('number listened');
 
+    }else if(classList.contains('decimal')){
+        if(lastInputFlag=='num1' && !num1.includes('.')){
+            num1+='.';
+            inputBox.textContent+='.';
+        }else if(lastInputFlag=='num2' && !num2.includes('.')){
+            num2+='.';
+            inputBox.textContent+='.';
+        }else if(lastInputFlag=='equals' && !inputBox.textContent.includes('.')){
+            num1=inputBox.textContent+='.';
+            totalBox.textContent='';
+        }
     }else if(classList.contains('clear-all')){
         num1='';
         num2='';
