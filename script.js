@@ -59,15 +59,24 @@ document.querySelector('.buttons').addEventListener('click',(e)=>{
     }else if(classList.contains('clear')){
         switch(lastInputFlag){
             case 'num1sign':
-
+                num1Sign='';
+                lastInputFlag='';
+                break;
             case 'num1':
                 num1 = num1.slice(0,-1);
+                if(num1==''){
+                    lastInputFlag='';
+                }
                 break;
             case 'operator':
                 operator='';
+                lastInputFlag='num1';
                 break;
             case 'num2':
-                num2 = num2.slice(0,-1);    
+                num2 = num2.slice(0,-1);
+                if(num2==''){
+                    lastInputFlag='operator';
+                }    
                 break;
         }
         inputBox.textContent=inputBox.textContent.slice(0,-1);   
@@ -77,14 +86,16 @@ document.querySelector('.buttons').addEventListener('click',(e)=>{
         switch(op){
             case '+': 
             case '−':
-                if(num1==''){
+                if(num1=='' && num1Sign==''){
                     num1Sign=op;
                     lastInputFlag='num1Sign';
                     inputBox.textContent=op;
+                }else if(num1=='' && num1Sign!=''){
+                    num1Sign=op;
+                    inputBox.textContent=op;
                 }else if(num2=='' && operator==''){
                     operator=op;
-                    lastInputFlag='operator';
-                    inputBox.textContent+=op;
+                    inputBox.textContent=inputBox.textContent += op;
                 }else if(num2=='' && operator!=''){
                     operator=op;
                     inputBox.textContent=inputBox.textContent.slice(0,-1) + op;
